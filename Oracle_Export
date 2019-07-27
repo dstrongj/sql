@@ -1,0 +1,77 @@
+
+WbExport -type=text
+         -file='/Users/Desktop/data.txt'
+         -compress=true
+         -delimiter='|'
+         -decimal=','
+         -sourcetable=table_name;
+
+WbExport -type=text
+         -outputDir=/Users/Desktop
+         -compress=true
+         -sourcetable=table_name;
+
+
+WbExport -file=file_name.txt -type=text -outputDir=/Users/Desktop -compress=true -delimiter=|;
+select column 
+from table_name
+where rownum < 2000001;
+
+
+WbExport -type=text -outputDir=/Users/Desktop -compress=true -delimiter='|' -decimal=',';
+select column from table_name where rownum < 2000001;
+
+
+select column || '01234' from table_name where rownum < 10;
+
+
+set term off
+set feed off
+set sqlformat csv
+spool out.csv
+select /*+ parallel */* from table_name;
+spool off
+
+
+WbExport 
+type=text
+file='/Users/path/to/file'
+compress=true
+delimiter='|'
+decimal=','
+sourcetable=table_name;
+
+
+SET colsep ,
+SET pagesize 20
+SET trimspool ON
+SET linesize 200
+SELECT * FROM table;
+
+
+set lines 9999 -- the appropriate size
+set head on  
+set colsep ';'
+set pages 0
+set feed off
+spool 
+file_name.csv
+select * FROM table;
+spool off
+
+
+set colsep ";"
+set linesize 9999
+set trimspool on
+set heading off
+set pagesize 0
+set wrap off
+set feedback off
+set newpage 0
+set arraysize 5000
+spool 
+csv_file.csv
+select * FROM table;
+spool off
+
+
